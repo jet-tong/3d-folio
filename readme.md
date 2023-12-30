@@ -11,7 +11,7 @@ Run the following command in the root directory of the project:
 docker compose up -d
 ```
 
-Then go to [localhost:8080](http://localhost:8080) to see the website.
+Then go to [localhost:8080](http://localhost:8080) to see the website, and [localhost:8080/#debug](http://localhost:8080/#debug) for the debug panel.
 
 
 ## Non-Docker Setup

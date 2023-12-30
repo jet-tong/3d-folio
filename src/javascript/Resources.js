@@ -19,6 +19,9 @@ import matcapYellowSource from '../models/matcaps/yellow.png'
 import matcapMetalSource from '../models/matcaps/metal.png'
 // import matcapGoldSource from '../models/matcaps/gold.png'
 
+// Jensenfolio
+import jensenfolioImageSource from '../models/jensenfolio/jensenfolio_image.png'
+
 // Intro
 import introStaticBaseSource from '../models/intro/static/base.glb'
 import introStaticCollisionSource from '../models/intro/static/collision.glb'
@@ -236,6 +239,10 @@ export default class Resources extends EventEmitter
             { name: 'matcapYellow', source: matcapYellowSource, type: 'texture' },
             { name: 'matcapMetal', source: matcapMetalSource, type: 'texture' },
             // { name: 'matcapGold', source: matcapGoldSource, type: 'texture' },
+
+            // Jensenfolio
+            // * Loader will automatically allow us to use jensenfolioImageTexture because of the type: 'texture' option
+            { name: 'jensenfolioImage', source: jensenfolioImageSource, type: 'texture' },
 
             // Intro
             { name: 'introStaticBase', source: introStaticBaseSource },

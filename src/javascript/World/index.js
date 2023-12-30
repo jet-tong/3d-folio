@@ -9,6 +9,7 @@ import Car from './Car.js'
 import Areas from './Areas.js'
 import Tiles from './Tiles.js'
 import Walls from './Walls.js'
+import JensenfolioSection from './Sections/JensenfolioSection.js'
 import IntroSection from './Sections/IntroSection.js'
 import ProjectsSection from './Sections/ProjectsSection.js'
 import CrossroadsSection from './Sections/CrossroadsSection.js'
@@ -92,6 +93,12 @@ export default class
             TweenLite.fromTo(this.reveal, 3, { matcapsProgress: 0 }, { matcapsProgress: 1 })
             TweenLite.fromTo(this.reveal, 3, { floorShadowsProgress: 0 }, { floorShadowsProgress: 1, delay: 0.5 })
             TweenLite.fromTo(this.shadows, 3, { alpha: 0 }, { alpha: 0.5, delay: 0.5 })
+
+            if(this.sections.jensenfolio)
+            {
+                TweenLite.fromTo(this.sections.jensenfolio.image.label.material, 0.3, { opacity: 0 }, { opacity: 1, delay: 0.5 })
+                TweenLite.fromTo(this.sections.jensenfolio.text.label.material, 0.3, { opacity: 0 }, { opacity: 1, delay: 0.75 })
+            }
 
             if(this.sections.intro)
             {
@@ -447,15 +454,27 @@ export default class
         // })
         // this.container.add(this.sections.distinctionD.container)
 
-        // Intro
-        this.sections.intro = new IntroSection({
+
+        // Jensenfolio
+        this.sections.jensenfolio = new JensenfolioSection({
             ...options,
             x: 0,
             y: 0
         })
-        this.container.add(this.sections.intro.container)
+        this.container.add(this.sections.jensenfolio.container)
 
-        // Crossroads
+        // TODO: Re-enable sections later
+
+
+        // // Intro
+        // this.sections.intro = new IntroSection({
+        //     ...options,
+        //     x: 0,
+        //     y: 0
+        // })
+        // this.container.add(this.sections.intro.container)
+
+        // // Crossroads
         // this.sections.crossroads = new CrossroadsSection({
         //     ...options,
         //     x: 0,
@@ -463,7 +482,7 @@ export default class
         // })
         // this.container.add(this.sections.crossroads.container)
 
-        // Projects
+        // // Projects
         // this.sections.projects = new ProjectsSection({
         //     ...options,
         //     x: 30,

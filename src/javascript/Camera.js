@@ -43,7 +43,8 @@ export default class Camera
 
         // Items
         this.angle.items = {
-            default: new THREE.Vector3(1.135, - 1.45, 1.15),
+            // default: new THREE.Vector3(1.135, - 1.45, 1.15),
+            default: new THREE.Vector3(0.145, - 0.750, 2.00),
             projects: new THREE.Vector3(0.38, - 1.4, 1.63)
         }
 
