@@ -17,13 +17,13 @@ export default class Floor
 
         // Colors
         this.colors = {}
-        this.colors.topLeft = '#f5883c'
-        this.colors.topRight = '#ff9043'
-        this.colors.bottomRight = '#fccf92'
-        this.colors.bottomLeft = '#f5aa58'
+        this.colors.topLeft = '#3c8df5'
+        this.colors.topRight = '#4394ff'
+        this.colors.bottomRight = '#92cfff'
+        this.colors.bottomLeft = '#58aaf5'
 
         // Material
-        this.material = new FloorMaterial()
+        this.material = new FloorMaterial() // Custom Material in Materials/Floor.js
 
         this.updateMaterial = () =>
         {
@@ -40,7 +40,7 @@ export default class Floor
             ])
 
             this.backgroundTexture = new THREE.DataTexture(data, 2, 2, THREE.RGBFormat)
-            this.backgroundTexture.magFilter = THREE.LinearFilter
+            this.backgroundTexture.magFilter = THREE.LinearFilter // Blends colours
             this.backgroundTexture.needsUpdate = true
 
             this.material.uniforms.tBackground.value = this.backgroundTexture
