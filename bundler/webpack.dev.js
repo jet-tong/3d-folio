@@ -8,7 +8,10 @@ module.exports = webpackMerge(
         devServer:
         {
             contentBase: './dist',
-            open: true
+            open: true,
+            watchOptions: {
+                poll: true // Enable polling for automatic refresh
+            }
         }
     }
 )

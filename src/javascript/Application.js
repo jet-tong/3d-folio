@@ -6,7 +6,7 @@ import Time from './Utils/Time.js'
 import World from './World/index.js'
 import Resources from './Resources.js'
 import Camera from './Camera.js'
-import ThreejsJourney from './ThreejsJourney.js'
+// import ThreejsJourney from './ThreejsJourney.js'
 
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js'
@@ -35,8 +35,8 @@ export default class Application
         this.setCamera()
         this.setPasses()
         this.setWorld()
-        this.setTitle()
-        this.setThreejsJourney()
+        // this.setTitle()
+        // this.setThreejsJourney()
     }
 
     /**
@@ -237,47 +237,47 @@ export default class Application
     /**
      * Set title
      */
-    setTitle()
-    {
-        this.title = {}
-        this.title.frequency = 300
-        this.title.width = 20
-        this.title.position = 0
-        this.title.$element = document.querySelector('title')
-        this.title.absolutePosition = Math.round(this.title.width * 0.25)
+    // setTitle()
+    // {
+    //     this.title = {}
+    //     this.title.frequency = 300
+    //     this.title.width = 20
+    //     this.title.position = 0
+    //     this.title.$element = document.querySelector('title')
+    //     this.title.absolutePosition = Math.round(this.title.width * 0.25)
 
-        this.time.on('tick', () =>
-        {
-            if(this.world.physics)
-            {
-                this.title.absolutePosition += this.world.physics.car.forwardSpeed
+    //     this.time.on('tick', () =>
+    //     {
+    //         if(this.world.physics)
+    //         {
+    //             this.title.absolutePosition += this.world.physics.car.forwardSpeed
 
-                if(this.title.absolutePosition < 0)
-                {
-                    this.title.absolutePosition = 0
-                }
-            }
-        })
+    //             if(this.title.absolutePosition < 0)
+    //             {
+    //                 this.title.absolutePosition = 0
+    //             }
+    //         }
+    //     })
 
-        window.setInterval(() =>
-        {
-            this.title.position = Math.round(this.title.absolutePosition % this.title.width)
+    //     window.setInterval(() =>
+    //     {
+    //         this.title.position = Math.round(this.title.absolutePosition % this.title.width)
 
-            document.title = `${'_'.repeat(this.title.width - this.title.position)}🚗${'_'.repeat(this.title.position)}`
-        }, this.title.frequency)
-    }
+    //         document.title = `${'_'.repeat(this.title.width - this.title.position)}🚗${'_'.repeat(this.title.position)}`
+    //     }, this.title.frequency)
+    // }
 
     /**
      * Set Three.js Journey
      */
-    setThreejsJourney()
-    {
-        this.threejsJourney = new ThreejsJourney({
-            config: this.config,
-            time: this.time,
-            world: this.world
-        })
-    }
+    // setThreejsJourney()
+    // {
+    //     this.threejsJourney = new ThreejsJourney({
+    //         config: this.config,
+    //         time: this.time,
+    //         world: this.world
+    //     })
+    // }
 
     /**
      * Destructor
