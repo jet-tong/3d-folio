@@ -31,3 +31,6 @@ npm run dev
 # Build for production in the dist/ directory
 npm run build
 ```
+
+## Future Directions?
+- [ ] Use the 'Projects' section for everything, and car only runs left/right, and scrolling will allow you to move as well.

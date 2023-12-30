@@ -167,13 +167,14 @@ export default class JensenfolioSection
         const markdownContent = `
         This is still a work in progress. Stay tuned!
         - 📫 GitHub: https://github.com/jet-tong/
+        (based on Bruno Simon's amazing portfolio: https://bruno-simon.com/)
         `;
         const textTexture = this.createTextTexture(markdownContent, 1024, 512); // You need to define createTextTexture
 
         // Label
         this.text.label = {};
         this.text.label.geometry = new THREE.PlaneBufferGeometry(12, 9, 1, 1);
-        this.text.label.material = new THREE.MeshBasicMaterial({ map: textTexture, transparent: true, depthWrite: false });
+        this.text.label.material = new THREE.MeshBasicMaterial({ map: textTexture, transparent: true, depthWrite: false, opacity: 0 });
         this.text.label.mesh = new THREE.Mesh(this.text.label.geometry, this.text.label.material);
         this.text.label.mesh.matrixAutoUpdate = false;
         this.text.container.add(this.text.label.mesh);
