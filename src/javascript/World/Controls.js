@@ -49,91 +49,92 @@ export default class Controls extends EventEmitter
         this.keyboard = {}
         this.keyboard.events = {}
 
-        this.keyboard.events.keyDown = (_event) =>
-        {
-            switch(_event.key)
-            {
-                case 'ArrowUp':
-                case 'z':
-                case 'w':
-                    this.camera.pan.reset()
-                    this.actions.up = true
-                    break
+        // this.keyboard.events.keyDown = (_event) =>
+        // {
+        //     switch(_event.key)
+        //     {
+        //         case 'ArrowUp':
+        //         case 'z':
+        //         case 'w':
+        //             this.camera.pan.reset()
+        //             this.actions.up = true
+        //             break
 
-                case 'ArrowRight':
-                case 'd':
-                    this.actions.right = true
-                    break
+        //         case 'ArrowRight':
+        //         case 'd':
+        //             this.actions.right = true
+        //             break
 
-                case 'ArrowDown':
-                case 's':
-                    this.camera.pan.reset()
-                    this.actions.down = true
-                    break
+        //         case 'ArrowDown':
+        //         case 's':
+        //             this.camera.pan.reset()
+        //             this.actions.down = true
+        //             break
 
-                case 'ArrowLeft':
-                case 'q':
-                case 'a':
-                    this.actions.left = true
-                    break
+        //         case 'ArrowLeft':
+        //         case 'q':
+        //         case 'a':
+        //             this.actions.left = true
+        //             break
 
-                case 'Control':
-                case ' ':
-                    this.actions.brake = true
-                    break
+        //         case 'Control':
+        //         case ' ':
+        //             this.actions.brake = true
+        //             break
 
-                case 'Shift':
-                    this.actions.boost = true
-                    break
+        //         case 'Shift':
+        //             this.actions.boost = true
+        //             break
 
-                // case ' ':
-                //     this.jump(true)
-                //     break
-            }
-        }
+        //         // case ' ':
+        //         //     this.jump(true)
+        //         //     break
+        //     }
+        // }
 
         this.keyboard.events.keyUp = (_event) =>
         {
             switch(_event.key)
             {
-                case 'ArrowUp':
-                case 'z':
-                case 'w':
-                    this.actions.up = false
-                    break
+                // case 'ArrowUp':
+                // case 'z':
+                // case 'w':
+                //     this.actions.up = false
+                //     break
 
-                case 'ArrowRight':
-                case 'd':
-                    this.actions.right = false
-                    break
+                // case 'ArrowRight':
+                // case 'd':
+                //     this.actions.right = false
+                //     break
 
-                case 'ArrowDown':
-                case 's':
-                    this.actions.down = false
-                    break
+                // case 'ArrowDown':
+                // case 's':
+                //     this.actions.down = false
+                //     break
 
-                case 'ArrowLeft':
-                case 'q':
-                case 'a':
-                    this.actions.left = false
-                    break
+                // case 'ArrowLeft':
+                // case 'q':
+                // case 'a':
+                //     this.actions.left = false
+                //     break
 
-                case 'Control':
-                case ' ':
-                    this.actions.brake = false
-                    break
+                // case 'Control':
+                // case ' ':
+                //     this.actions.brake = false
+                //     break
 
-                case 'Shift':
-                    this.actions.boost = false
-                    break
+                // case 'Shift':
+                //     this.actions.boost = false
+                //     break
 
                 case 'r':
-                    this.trigger('action', ['reset'])
+                    // this.trigger('action', ['reset'])
+                    this.camera.pan.reset()
                     break
             }
         }
 
-        document.addEventListener('keydown', this.keyboard.events.keyDown)
+        // document.addEventListener('keydown', this.keyboard.events.keyDown)
         document.addEventListener('keyup', this.keyboard.events.keyUp)
     }
 

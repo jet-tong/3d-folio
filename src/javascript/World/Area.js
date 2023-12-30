@@ -278,25 +278,25 @@ export default class Area extends EventEmitter
         this.mouseMesh.updateMatrix()
         this.container.add(this.mouseMesh)
 
-        this.time.on('tick', () =>
-        {
-            if(this.testCar)
-            {
-                const isIn = Math.abs(this.car.position.x - this.position.x) < Math.abs(this.halfExtents.x) && Math.abs(this.car.position.y - this.position.y) < Math.abs(this.halfExtents.y)
+        // this.time.on('tick', () =>
+        // {
+        //     if(this.testCar)
+        //     {
+        //         const isIn = Math.abs(this.car.position.x - this.position.x) < Math.abs(this.halfExtents.x) && Math.abs(this.car.position.y - this.position.y) < Math.abs(this.halfExtents.y)
 
-                if(isIn !== this.isIn)
-                {
-                    if(isIn)
-                    {
-                        this.in(!this.config.touch)
-                    }
-                    else
-                    {
-                        this.out()
-                    }
-                }
-            }
-        })
+        //         if(isIn !== this.isIn)
+        //         {
+        //             if(isIn)
+        //             {
+        //                 this.in(!this.config.touch)
+        //             }
+        //             else
+        //             {
+        //                 this.out()
+        //             }
+        //         }
+        //     }
+        // })
 
         window.addEventListener('keydown', (_event) =>
         {
