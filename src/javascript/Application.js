@@ -109,6 +109,12 @@ export default class Application
         this.css3DRenderer.setSize(this.sizes.viewport.width, this.sizes.viewport.height);
         this.css3DRenderer.domElement.style.position = 'absolute';
         this.css3DRenderer.domElement.style.top = '0';
+        this.css3DRenderer.domElement.style.pointerEvents = 'none'; // Make sure you can click 'through' the renderer
+        const links = this.css3DRenderer.domElement.querySelectorAll('a');
+        links.forEach(link => {
+            link.style.pointerEvents = 'auto';
+        });
+
         document.body.appendChild(this.css3DRenderer.domElement);
 
         // Resize event for CSS3DRenderer (Just keeping it more modular for now)

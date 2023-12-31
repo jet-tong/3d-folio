@@ -124,7 +124,7 @@ export default class JensenfolioSection
         this.html.element.style.opacity = '0'; // Start with the element being fully transparent
         this.html.element.style.transition = 'opacity 0.3s ease-in-out'; // Set the transition effect for opacity change
         this.html.element.style.position = 'absolute';
-        this.html.element.style.pointerEvents = 'none'; // Make sure the element doesn't block your scene interactions
+        // this.html.element.style.pointerEvents = 'none'; // Make sure the element doesn't block your scene interactions
     
         this.html.element.innerHTML = `
         <style>
