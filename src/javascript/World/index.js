@@ -96,7 +96,8 @@ export default class
 
             if(this.sections.jensenfolio)
             {
-                TweenLite.fromTo(this.sections.jensenfolio.image.label.material, 0.3, { opacity: 0 }, { opacity: 1, delay: 0.5 })
+                TweenLite.fromTo(this.sections.jensenfolio.html.element.style, 0.3, { opacity: 0 }, { opacity: 1, delay: 0.5 })
+                // TweenLite.fromTo(this.sections.jensenfolio.image.label.material, 0.3, { opacity: 0 }, { opacity: 1, delay: 0.5 })
                 TweenLite.fromTo(this.sections.jensenfolio.text.label.material, 0.3, { opacity: 0 }, { opacity: 1, delay: 1.5 })
             }
 

@@ -1,4 +1,6 @@
 import * as THREE from 'three'
+import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
+
 
 export default class JensenfolioSection
 {
@@ -22,7 +24,8 @@ export default class JensenfolioSection
         this.container.updateMatrix()
 
         this.setStatic()
-        this.setImage()
+        this.setHtml()
+        // this.setImage()
         this.setText()
         // this.setInstructions()
         // this.setTitles()
@@ -109,6 +112,91 @@ export default class JensenfolioSection
     //         })
     //     }
     // }
+
+
+    setHtml()
+    {
+        this.html = {}
+
+        this.html.element = document.createElement('div')
+        this.html.element.classList.add('custom-css-class')
+
+        this.html.element.style.opacity = '0'; // Start with the element being fully transparent
+        this.html.element.style.transition = 'opacity 0.3s ease-in-out'; // Set the transition effect for opacity change
+        this.html.element.style.position = 'absolute';
+        this.html.element.style.pointerEvents = 'none'; // Make sure the element doesn't block your scene interactions
+    
+        this.html.element.innerHTML = `
+        <style>
+            .custom-css-class {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                color: #ffffff;
+            }
+            .custom-css-class p {
+                font-size: 1.0rem;
+            }
+            ul {
+                list-style-position: inside;
+                padding-left: 10pt;
+            }
+
+        </style>
+        <h3>Hey there 👋 I'm Jensen</h3>
+
+        <ul>
+          <li>🌍 I'm based in Cambridge, UK</li>
+          <li>🎓 I'm reading Engineering at the University of Cambridge</li>
+          <li>🌱 I'm learning PyTorch, and webdev on the side</li>
+          <li>🚀 I'm currently working on <a href="https://jensentong.com">my website</a>!</li>
+          <li>📫 You can contact me at <a href="mailto:jensen.tong+jt@gmail.com">jensen.tong+jt@gmail.com</a></li>
+        </ul>
+
+        <h3>Skills</h3>
+        
+        <p align="left">
+            <a href="https://www.python.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/python-colored.svg" width="36" height="36" alt="Python" /></a>
+            <a href="https://opencv.org/" target="_blank" rel="noreferrer"><img src="https://icon.icepanel.io/Technology/svg/OpenCV.svg" width="36" height="36" alt="OpenCV" /></a>
+            <a href="https://git-scm.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/git-colored.svg" width="36" height="36" alt="Git" /></a>
+            <a href="https://www.javascript.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/javascript-colored.svg" width="36" height="36" alt="JavaScript" /></a>
+            <a href="https://fastapi.tiangolo.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/fastapi-colored.svg" width="36" height="36" alt="Fast API" /></a>
+            <a href="https://www.postgresql.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/postgresql-colored.svg" width="36" height="36" alt="PostgreSQL" /></a>
+            <a href="https://www.digitalocean.com" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/digitalocean-colored.svg" width="36" height="36" alt="Digital Ocean" /></a>
+            <a href="https://www.docker.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/docker-colored.svg" width="36" height="36" alt="Docker" /></a>
+            <a href="https://www.linux.org" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/linux-colored.svg" width="36" height="36" alt="Linux" /></a>
+            <a href="https://www.raspberrypi.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/raspberrypi-colored.svg" width="36" height="36" alt="Raspberry Pi" /></a>
+            <a href="https://www.mathworks.com/products/matlab.html" target="_blank" rel="noreferrer"><img src="https://icon.icepanel.io/Technology/svg/MATLAB.svg" width="36" height="36" alt="MATLAB" /></a>
+        </p>
+        <p align="left">
+            <a href="https://pytorch.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/pytorch-colored.svg" width="36" height="36" alt="PyTorch" /></a>
+            <a href="https://html.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/html5-colored.svg" width="36" height="36" alt="HTML5" /></a>
+            <a href="https://www.w3.org/Style/CSS/Overview.en.html" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/css3-colored.svg" width="36" height="36" alt="CSS3" /></a>
+            <a href="https://vuejs.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/vuejs-colored.svg" width="36" height="36" alt="Vue" /></a>
+            <a href="https://www.nginx.com/" target="_blank" rel="noreferrer"><img src="https://icon.icepanel.io/Technology/svg/NGINX.svg" width="36" height="36" alt="nginx" /></a>
+            <a href="https://github.com/features/actions" target="_blank" rel="noreferrer"><img src="https://icon.icepanel.io/Technology/svg/GitHub-Actions.svg" width="36" height="36" alt="Google Tag Manager" /></a>
+            <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noreferrer"><img src="https://icon.icepanel.io/Technology/png-shadow-512/Bash.png" width="36" height="36" alt="Bash Scripting" /></a>
+            <a href="https://unity.com/" target="_blank" rel="noreferrer"><img src="https://icon.icepanel.io/Technology/png-shadow-512/Unity.png" width="36" height="36" alt="Unity" /></a>
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/csharp-colored.svg" width="36" height="36" alt="C#" /></a>
+            <a href="https://docs.microsoft.com/en-us/cpp/?view=msvc-170" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/cplusplus-colored.svg" width="36" height="36" alt="C++" /></a>
+            <a href="https://www.latex-project.org/" target="_blank" rel="noreferrer"><img src="https://icon.icepanel.io/Technology/png-shadow-512/LaTeX.png" width="36" height="36" alt="LaTeX" /></a>
+            </p>
+            
+            
+        <h3>Socials</h3>
+
+        <p align="left"> 
+            <a href="https://www.github.com/jet-tong" target="_blank" rel="noreferrer"> <picture> <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github-dark.svg" /> <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg" /> <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg" width="32" height="32" /> </picture> </a> 
+            <a href="https://www.linkedin.com/in/jensen-tong/" target="_blank" rel="noreferrer"> <picture> <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/linkedin-dark.svg" /> <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/linkedin.svg" /> <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/linkedin.svg" width="32" height="32" /> </picture></a>
+        </p>
+        `
+
+        this.css3DObject = new CSS3DObject(this.html.element)
+        this.css3DObject.position.set(0, -6, 0)
+        this.css3DObject.scale.set(0.02, 0.02, 0.02)
+        this.css3DObject.rotation.set(0, 0, 0)
+        this.container.add(this.css3DObject)
+
+    }
+
 
     setImage()
     {

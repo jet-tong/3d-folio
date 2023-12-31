@@ -11,6 +11,8 @@ import Camera from './Camera.js'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
+import { CSS3DRenderer } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
+
 import BlurPass from './Passes/Blur.js'
 import GlowsPass from './Passes/Glows.js'
 
@@ -100,6 +102,20 @@ export default class Application
         {
             this.renderer.setSize(this.sizes.viewport.width, this.sizes.viewport.height)
         })
+
+
+        // Initialize CSS3DRenderer
+        this.css3DRenderer = new CSS3DRenderer();
+        this.css3DRenderer.setSize(this.sizes.viewport.width, this.sizes.viewport.height);
+        this.css3DRenderer.domElement.style.position = 'absolute';
+        this.css3DRenderer.domElement.style.top = '0';
+        document.body.appendChild(this.css3DRenderer.domElement);
+
+        // Resize event for CSS3DRenderer (Just keeping it more modular for now)
+        this.sizes.on('resize', () => {
+            this.css3DRenderer.setSize(this.sizes.viewport.width, this.sizes.viewport.height);
+        });
+
     }
 
     /**
@@ -202,6 +218,9 @@ export default class Application
             this.passes.composer.render()
             // this.renderer.domElement.style.background = 'black'
             // this.renderer.render(this.scene, this.camera.instance)
+
+            // Render with CSS3DRenderer
+            this.css3DRenderer.render(this.scene, this.camera.instance);
         })
 
         // Resize event
