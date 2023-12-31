@@ -21,7 +21,7 @@ export default class JensenfolioSection
         this.container.matrixAutoUpdate = false
         this.container.updateMatrix()
 
-        // this.setStatic()
+        this.setStatic()
         this.setImage()
         this.setText()
         // this.setInstructions()
@@ -30,16 +30,16 @@ export default class JensenfolioSection
         this.setDikes()
     }
 
-    // setStatic()
-    // {
-    //     this.objects.add({
-    //         base: this.resources.items.introStaticBase.scene,
-    //         collision: this.resources.items.introStaticCollision.scene,
-    //         floorShadowTexture: this.resources.items.introStaticFloorShadowTexture,
-    //         offset: new THREE.Vector3(0, 0, 0),
-    //         mass: 0
-    //     })
-    // }
+    setStatic()
+    {
+        this.objects.add({
+            base: this.resources.items.introStaticBase.scene,
+            collision: this.resources.items.introStaticCollision.scene,
+            floorShadowTexture: this.resources.items.introStaticFloorShadowTexture,
+            offset: new THREE.Vector3(0, 0, 0),
+            mass: 0
+        })
+    }
 
     // setInstructions()
     // {
@@ -120,7 +120,7 @@ export default class JensenfolioSection
 
         this.image = {}
         this.image.x = 0
-        this.image.y = 1
+        this.image.y = -5
 
         // Container
         this.image.container = new THREE.Object3D()
@@ -154,7 +154,7 @@ export default class JensenfolioSection
 
         this.text = {};
         this.text.x = 0;
-        this.text.y = -12;
+        this.text.y = -23;
 
         // Container
         this.text.container = new THREE.Object3D();
@@ -341,8 +341,8 @@ export default class JensenfolioSection
     setTiles()
     {
         this.tiles.add({
-            start: new THREE.Vector2(0, - 5.5),
-            delta: new THREE.Vector2(0, - 5.5)
+            start: new THREE.Vector2(0, - 11.0),
+            delta: new THREE.Vector2(0, - 10.5)
         })
     }
 
@@ -424,7 +424,7 @@ export default class JensenfolioSection
                 equilibrateLastLine: false,
                 widthCount: 3,
                 heightCount: 2,
-                position: new THREE.Vector3(this.x + 9.9, this.y - 14.7, 0),
+                position: new THREE.Vector3(this.x + 9.9, this.y - 24.7, 0),
                 offsetWidth: new THREE.Vector3(0, - 1.05, 0),
                 offsetHeight: new THREE.Vector3(0, 0, 0.45),
                 randomOffset: new THREE.Vector3(0, 0, 0),
@@ -460,7 +460,7 @@ export default class JensenfolioSection
                 equilibrateLastLine: false,
                 widthCount: 3,
                 heightCount: 2,
-                position: new THREE.Vector3(this.x - 6.8, this.y + 0.7, 0),
+                position: new THREE.Vector3(this.x - 7.8, this.y + 0.7, 0),
                 offsetWidth: new THREE.Vector3(0, - 1.05, 0),
                 offsetHeight: new THREE.Vector3(0, 0, 0.45),
                 randomOffset: new THREE.Vector3(0, 0, 0),

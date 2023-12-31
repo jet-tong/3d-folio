@@ -96,10 +96,6 @@ export default class
 
             if(this.sections.jensenfolio)
             {
-                console.log('Jensenfolio:', this.sections.jensenfolio);
-                console.log('Jensenfolio image:', this.sections.jensenfolio.image);
-                console.log('Jensenfolio text:', this.sections.jensenfolio.text);
-
                 TweenLite.fromTo(this.sections.jensenfolio.image.label.material, 0.3, { opacity: 0 }, { opacity: 1, delay: 0.5 })
                 TweenLite.fromTo(this.sections.jensenfolio.text.label.material, 0.3, { opacity: 0 }, { opacity: 1, delay: 1.5 })
             }
