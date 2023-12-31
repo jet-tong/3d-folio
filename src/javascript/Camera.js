@@ -116,7 +116,7 @@ export default class Camera
         this.zoom = {}
         this.zoom.easing = 0.1
         this.zoom.minDistance = 14
-        this.zoom.amplitude = 40 // TODO Change to get full view of the scene later
+        this.zoom.amplitude = 25 // TODO Change to get full view of the scene later
         this.zoom.value = this.config.cyberTruck ? 0.3 : 0.5
         this.zoom.targetValue = this.zoom.value
         this.zoom.distance = this.zoom.minDistance + this.zoom.amplitude * this.zoom.value

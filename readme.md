@@ -3,15 +3,15 @@
 ## About
 Based on folio-2019 by Bruno Simon: [bruno-simon.com](https://www.bruno-simon.com/).
 
-## Setup
+## Docker Setup
 Download [Docker](https://www.docker.com/products/docker-desktop).
 Run the following command in the root directory of the project:
 
 ``` bash
-docker compose up -d
+docker compose up -d --build
 ```
 
-Then go to [localhost:8080](http://localhost:8080) to see the website, and [localhost:8080/#debug](http://localhost:8080/#debug) for the debug panel.
+Wait a bit, then go to [localhost:8080](http://localhost:8080) to see the website, and [localhost:8080/#debug](http://localhost:8080/#debug) for the debug panel.
 
 
 ## Non-Docker Setup
