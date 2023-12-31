@@ -96,6 +96,10 @@ export default class
 
             if(this.sections.jensenfolio)
             {
+                console.log('Jensenfolio:', this.sections.jensenfolio);
+                console.log('Jensenfolio image:', this.sections.jensenfolio.image);
+                console.log('Jensenfolio text:', this.sections.jensenfolio.text);
+
                 TweenLite.fromTo(this.sections.jensenfolio.image.label.material, 0.3, { opacity: 0 }, { opacity: 1, delay: 0.5 })
                 TweenLite.fromTo(this.sections.jensenfolio.text.label.material, 0.3, { opacity: 0 }, { opacity: 1, delay: 1.5 })
             }
@@ -109,30 +113,30 @@ export default class
                 }
             }
 
-            // Car
-            this.physics.car.chassis.body.sleep()
-            this.physics.car.chassis.body.position.set(0, 0, 12)
+            // // Car
+            // this.physics.car.chassis.body.sleep()
+            // this.physics.car.chassis.body.position.set(0, 0, 12)
 
-            window.setTimeout(() =>
-            {
-                this.physics.car.chassis.body.wakeUp()
-            }, 300)
+            // window.setTimeout(() =>
+            // {
+            //     this.physics.car.chassis.body.wakeUp()
+            // }, 300)
 
-            // Sound
-            TweenLite.fromTo(this.sounds.engine.volume, 0.5, { master: 0 }, { master: 0.7, delay: 0.3, ease: Power2.easeIn })
-            window.setTimeout(() =>
-            {
-                this.sounds.play('reveal')
-            }, 400)
+            // // Sound
+            // TweenLite.fromTo(this.sounds.engine.volume, 0.5, { master: 0 }, { master: 0.7, delay: 0.3, ease: Power2.easeIn })
+            // window.setTimeout(() =>
+            // {
+            //     this.sounds.play('reveal')
+            // }, 400)
 
-            // Controls
-            if(this.controls.touch)
-            {
-                window.setTimeout(() =>
-                {
-                    this.controls.touch.reveal()
-                }, 400)
-            }
+            // // Controls
+            // if(this.controls.touch)
+            // {
+            //     window.setTimeout(() =>
+            //     {
+            //         this.controls.touch.reveal()
+            //     }, 400)
+            // }
         }
 
         // Time tick
