@@ -133,6 +133,7 @@ export default class Application
             time: this.time,
             sizes: this.sizes,
             renderer: this.renderer,
+            css3DRenderer: this.css3DRenderer,
             debug: this.debug,
             config: this.config
         })

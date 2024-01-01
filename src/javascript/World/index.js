@@ -60,10 +60,10 @@ export default class
 
     start()
     {
-        window.setTimeout(() =>
-        {
-            this.camera.pan.enable()
-        }, 2000)
+        // window.setTimeout(() =>
+        // {
+        //     this.camera.pan.enable()
+        // }, 2000) // TODO Im now missing some pan because of this?
 
         this.setReveal()
         this.setMaterials()
@@ -460,7 +460,7 @@ export default class
         this.sections.jensenfolio = new JensenfolioSection({
             ...options,
             x: 0,
-            y: 0
+            y: 5
         })
         this.container.add(this.sections.jensenfolio.container)
 

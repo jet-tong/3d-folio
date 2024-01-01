@@ -8,7 +8,11 @@ Download [Docker](https://www.docker.com/products/docker-desktop).
 Run the following command in the root directory of the project:
 
 ``` bash
+# Build and run the container
 docker compose up -d --build
+
+# To view logs in real time
+docker compose logs -f
 ```
 
 Wait a bit, then go to [localhost:8080](http://localhost:8080) to see the website, and [localhost:8080/#debug](http://localhost:8080/#debug) for the debug panel.

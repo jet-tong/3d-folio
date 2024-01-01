@@ -39,7 +39,7 @@ export default class JensenfolioSection
             base: this.resources.items.introStaticBase.scene,
             collision: this.resources.items.introStaticCollision.scene,
             floorShadowTexture: this.resources.items.introStaticFloorShadowTexture,
-            offset: new THREE.Vector3(0, 0, 0),
+            offset: new THREE.Vector3(this.x + 0, this.y + 0, 0),
             mass: 0
         })
     }
@@ -184,54 +184,55 @@ export default class JensenfolioSection
         <h3>Socials</h3>
 
         <p align="left"> 
-            <a href="https://www.github.com/jet-tong" target="_blank" rel="noreferrer"> <picture> <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github-dark.svg" /> <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg" /> <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg" width="32" height="32" /> </picture> </a> 
-            <a href="https://www.linkedin.com/in/jensen-tong/" target="_blank" rel="noreferrer"> <picture> <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/linkedin-dark.svg" /> <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/linkedin.svg" /> <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/linkedin.svg" width="32" height="32" /> </picture></a>
+            <a href="https://www.github.com/jet-tong/" target="_blank" rel="noreferrer"><img src="https://icon.icepanel.io/Technology/png-shadow-512/GitHub.png" width="36" height="36" alt="Github" /></a>
+            <a href="https://www.linkedin.com/in/jensen-tong/" target="_blank" rel="noreferrer"><img src="https://icon.icepanel.io/Technology/svg/LinkedIn.svg" width="36" height="36" alt="LinkedIn" /></a>
         </p>
+
         `
 
         this.css3DObject = new CSS3DObject(this.html.element)
-        this.css3DObject.position.set(0, -6, 0)
-        this.css3DObject.scale.set(0.02, 0.02, 0.02)
+        this.css3DObject.position.set(this.x + 0, this.y - 6, 0)
+        this.css3DObject.scale.set(0.018, 0.018, 0.018)
         this.css3DObject.rotation.set(0, 0, 0)
         this.container.add(this.css3DObject)
 
     }
 
 
-    setImage()
-    {
-        // ! Must disable cuz or else it will not load on mobile!
-        // if(this.config.touch) 
-        // {
-        //     return
-        // }
+    // setImage()
+    // {
+    //     // ! Must disable cuz or else it will not load on mobile!
+    //     // if(this.config.touch) 
+    //     // {
+    //     //     return
+    //     // }
 
-        this.image = {}
-        this.image.x = 0
-        this.image.y = -5
+    //     this.image = {}
+    //     this.image.x = this.x + 0
+    //     this.image.y = this.y - 5
 
-        // Container
-        this.image.container = new THREE.Object3D()
-        this.image.container.position.x = this.image.x
-        this.image.container.position.y = this.image.y
-        this.image.container.matrixAutoUpdate = false
-        this.image.container.updateMatrix()
-        this.container.add(this.image.container)
+    //     // Container
+    //     this.image.container = new THREE.Object3D()
+    //     this.image.container.position.x = this.image.x
+    //     this.image.container.position.y = this.image.y
+    //     this.image.container.matrixAutoUpdate = false
+    //     this.image.container.updateMatrix()
+    //     this.container.add(this.image.container)
 
-        // Label
-        this.image.label = {}
-        this.image.label.geometry = new THREE.PlaneBufferGeometry(9, 7, 1, 1)
+    //     // Label
+    //     this.image.label = {}
+    //     this.image.label.geometry = new THREE.PlaneBufferGeometry(9, 7, 1, 1)
 
-        this.image.label.texture = this.resources.items.jensenfolioImageTexture
-        this.image.label.texture.magFilter = THREE.NearestFilter
-        this.image.label.texture.minFilter = THREE.LinearFilter
+    //     this.image.label.texture = this.resources.items.jensenfolioImageTexture
+    //     this.image.label.texture.magFilter = THREE.NearestFilter
+    //     this.image.label.texture.minFilter = THREE.LinearFilter
 
-        this.image.label.material = new THREE.MeshBasicMaterial({ transparent: true, alphaMap: this.image.label.texture, color: 0xffffff, depthWrite: false, opacity: 0 })
+    //     this.image.label.material = new THREE.MeshBasicMaterial({ transparent: true, alphaMap: this.image.label.texture, color: 0xffffff, depthWrite: false, opacity: 0 })
 
-        this.image.label.mesh = new THREE.Mesh(this.image.label.geometry, this.image.label.material)
-        this.image.label.mesh.matrixAutoUpdate = false
-        this.image.container.add(this.image.label.mesh)
-    }
+    //     this.image.label.mesh = new THREE.Mesh(this.image.label.geometry, this.image.label.material)
+    //     this.image.label.mesh.matrixAutoUpdate = false
+    //     this.image.container.add(this.image.label.mesh)
+    // }
 
 
     // ALTERNATIVE: Use createTextTexture() to create a texture from a string
@@ -241,8 +242,8 @@ export default class JensenfolioSection
         // }
 
         this.text = {};
-        this.text.x = 0;
-        this.text.y = -23;
+        this.text.x = this.x + 0;
+        this.text.y = this.y - 23;
 
         // Container
         this.text.container = new THREE.Object3D();
@@ -255,7 +256,6 @@ export default class JensenfolioSection
 
         const markdownContent = `
         This is still a work in progress. Stay tuned!
-        - 📫 GitHub: https://github.com/jet-tong/
         (based on Bruno Simon's amazing portfolio: https://bruno-simon.com/)
         `;
         const textTexture = this.createTextTexture(markdownContent, 1024, 512); // You need to define createTextTexture
@@ -429,7 +429,7 @@ export default class JensenfolioSection
     setTiles()
     {
         this.tiles.add({
-            start: new THREE.Vector2(0, - 11.0),
+            start: new THREE.Vector2(this.x + 0, this.y - 11.0),
             delta: new THREE.Vector2(0, - 10.5)
         })
     }
