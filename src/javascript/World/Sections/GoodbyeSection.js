@@ -62,11 +62,15 @@ export default class GoodbyeSection {
             <a href="https://www.linkedin.com/in/jensen-tong/" target="_blank" rel="noreferrer"><img src="https://icon.icepanel.io/Technology/svg/LinkedIn.svg" width="36" height="36" alt="LinkedIn" /></a>
         </p>
 
-        <br><br>
+        <br>
+
+        <p align="center">
 
         Made with three.js, based on Bruno Simon's amazing portfolio: https://bruno-simon.com/
         <br>
         Jensen Tong, 2025
+
+        </p>
 
         `;
 
