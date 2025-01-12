@@ -96,9 +96,9 @@ export default class ProjectsSection {
         this.container.updateMatrix();
 
         // Add GridHelper for debugging
-        const gridHelper = new THREE.GridHelper(200, 40); // 5 units per division
-        gridHelper.rotation.x = Math.PI / 2;
-        this.container.add(gridHelper);
+        // const gridHelper = new THREE.GridHelper(200, 40); // 5 units per division
+        // gridHelper.rotation.x = Math.PI / 2;
+        // this.container.add(gridHelper);
 
         this.setGeometries();
         this.setMeshes();

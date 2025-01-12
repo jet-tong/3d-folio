@@ -1,128 +1,160 @@
-import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { TweenLite } from 'gsap/TweenLite'
-import { Power1 } from 'gsap/EasePack'
+import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { TweenLite } from "gsap/TweenLite";
+import { Power1 } from "gsap/EasePack";
 
-export default class Camera
-{
-    constructor(_options)
-    {
+export default class Camera {
+    constructor(_options) {
         // Options
-        this.time = _options.time
-        this.sizes = _options.sizes
-        this.renderer = _options.renderer
-        this.css3DRenderer = _options.css3DRenderer
-        this.debug = _options.debug
-        this.config = _options.config
+        this.time = _options.time;
+        this.sizes = _options.sizes;
+        this.renderer = _options.renderer;
+        this.css3DRenderer = _options.css3DRenderer;
+        this.debug = _options.debug;
+        this.config = _options.config;
 
         // Set up
-        this.container = new THREE.Object3D()
-        this.container.matrixAutoUpdate = false
+        this.container = new THREE.Object3D();
+        this.container.matrixAutoUpdate = false;
 
-        this.target = new THREE.Vector3(0, 0, 0)
-        this.targetEased = new THREE.Vector3(0, 0, 0)
-        this.easing = 0.15
+        this.target = new THREE.Vector3(0, 0, 0);
+        this.targetEased = new THREE.Vector3(0, 0, 0);
+        this.easing = 0.15;
 
         // Debug
-        if(this.debug)
-        {
-            this.debugFolder = this.debug.addFolder('camera')
+        if (this.debug) {
+            this.debugFolder = this.debug.addFolder("camera");
             // this.debugFolder.open()
         }
 
-        this.setAngle()
-        this.setInstance()
+        this.setAngle();
+        this.setInstance();
         // this.setZoom()
         // this.setPan()
-        this.setScrollingControls()
-        this.setOrbitControls()
+        this.setScrollingControls();
+        this.setOrbitControls();
     }
 
-    setAngle()
-    {
+    setAngle() {
         // Set up
-        this.angle = {}
+        this.angle = {};
 
         // Items
         this.angle.items = {
             // default: new THREE.Vector3(1.135, - 1.45, 1.15),
             // default: new THREE.Vector3(0.145, - 0.750, 2.00),
-            default: new THREE.Vector3(-0.157, -0.750, 2.00),
-            projects: new THREE.Vector3(0.38, - 1.4, 1.63)
-        }
+            default: new THREE.Vector3(-0.157, -0.75, 2.0),
+            projects: new THREE.Vector3(0.38, -1.4, 1.63),
+        };
 
         // Value
-        this.angle.value = new THREE.Vector3()
-        this.angle.value.copy(this.angle.items.default)
+        this.angle.value = new THREE.Vector3();
+        this.angle.value.copy(this.angle.items.default);
 
         // Set method
-        this.angle.set = (_name) =>
-        {
-            const angle = this.angle.items[_name]
-            if(typeof angle !== 'undefined')
-            {
-                TweenLite.to(this.angle.value, 2, { ...angle, ease: Power1.easeInOut })
+        this.angle.set = (_name) => {
+            const angle = this.angle.items[_name];
+            if (typeof angle !== "undefined") {
+                TweenLite.to(this.angle.value, 2, {
+                    ...angle,
+                    ease: Power1.easeInOut,
+                });
             }
-        }
+        };
 
         // Debug
-        if(this.debug)
-        {
-            this.debugFolder.add(this, 'easing').step(0.0001).min(0).max(1).name('easing')
-            this.debugFolder.add(this.angle.value, 'x').step(0.001).min(- 2).max(2).name('invertDirectionX').listen()
-            this.debugFolder.add(this.angle.value, 'y').step(0.001).min(- 2).max(2).name('invertDirectionY').listen()
-            this.debugFolder.add(this.angle.value, 'z').step(0.001).min(- 2).max(5).name('invertDirectionZ').listen()
+        if (this.debug) {
+            this.debugFolder
+                .add(this, "easing")
+                .step(0.0001)
+                .min(0)
+                .max(1)
+                .name("easing");
+            this.debugFolder
+                .add(this.angle.value, "x")
+                .step(0.001)
+                .min(-2)
+                .max(2)
+                .name("invertDirectionX")
+                .listen();
+            this.debugFolder
+                .add(this.angle.value, "y")
+                .step(0.001)
+                .min(-2)
+                .max(2)
+                .name("invertDirectionY")
+                .listen();
+            this.debugFolder
+                .add(this.angle.value, "z")
+                .step(0.001)
+                .min(-2)
+                .max(5)
+                .name("invertDirectionZ")
+                .listen();
         }
     }
 
-    setInstance()
-    {
+    setInstance() {
         // Set up
-        this.instance = new THREE.PerspectiveCamera(40, this.sizes.viewport.width / this.sizes.viewport.height, 1, 80)
-        this.instance.up.set(0, 0, 1)
-        this.instance.position.copy(this.angle.value)
-        this.instance.lookAt(new THREE.Vector3())
-        this.container.add(this.instance)
+        this.instance = new THREE.PerspectiveCamera(
+            40,
+            this.sizes.viewport.width / this.sizes.viewport.height,
+            1,
+            80
+        );
+        this.instance.up.set(0, 0, 1);
+        this.instance.position.copy(this.angle.value);
+        this.instance.lookAt(new THREE.Vector3());
+        this.container.add(this.instance);
 
         // Set up zoom (replace setZoom() method)
-        this.zoom = {}
-        this.zoom.easing = 0.02
-        this.zoom.distance = 20
-        this.zoom.targetDistance = this.zoom.distance
+        this.zoom = {};
+        this.zoom.easing = 0.02;
+        this.zoom.distance = 20;
+        this.zoom.targetDistance = this.zoom.distance;
 
         // Resize event
-        this.sizes.on('resize', () =>
-        {
-            this.instance.aspect = this.sizes.viewport.width / this.sizes.viewport.height
-            this.instance.updateProjectionMatrix()
-        })
+        this.sizes.on("resize", () => {
+            this.instance.aspect =
+                this.sizes.viewport.width / this.sizes.viewport.height;
+            this.instance.updateProjectionMatrix();
+        });
 
         // Time tick
-        this.time.on('tick', () =>
-        {
-            if(!this.orbitControls.enabled)
-            {
-                this.targetEased.x += (this.target.x - this.targetEased.x) * this.easing
-                this.targetEased.y += (this.target.y - this.targetEased.y) * this.easing
-                this.targetEased.z += (this.target.z - this.targetEased.z) * this.easing
+        this.time.on("tick", () => {
+            if (!this.orbitControls.enabled) {
+                this.targetEased.x +=
+                    (this.target.x - this.targetEased.x) * this.easing;
+                this.targetEased.y +=
+                    (this.target.y - this.targetEased.y) * this.easing;
+                this.targetEased.z +=
+                    (this.target.z - this.targetEased.z) * this.easing;
 
                 // Update zoom // TODO move to Application setConfig() method
-                this.zoom.distance += (this.zoom.targetDistance - this.zoom.distance) * this.zoom.easing
+                this.zoom.distance +=
+                    (this.zoom.targetDistance - this.zoom.distance) *
+                    this.zoom.easing;
                 // Apply zoom
-                this.instance.position.copy(this.targetEased).add(this.angle.value.clone().normalize().multiplyScalar(this.zoom.distance))
+                this.instance.position
+                    .copy(this.targetEased)
+                    .add(
+                        this.angle.value
+                            .clone()
+                            .normalize()
+                            .multiplyScalar(this.zoom.distance)
+                    );
 
                 // Look at target
-                this.instance.lookAt(this.targetEased)
+                this.instance.lookAt(this.targetEased);
 
                 // // Apply pan
                 // this.instance.position.x += this.pan.value.x
                 // this.instance.position.y += this.pan.value.y
 
                 // Apply scrolling
-                this.instance.position.y = this.scrolling.targetEased.y
-
+                this.instance.position.y = this.scrolling.targetEased.y;
             }
-        })
+        });
     }
 
     // setZoom()
@@ -351,77 +383,100 @@ export default class Camera
         // Set up scrolling
         this.scrolling = {};
         this.scrolling.enabled = true;
-        this.scrolling.easing = 0.10;
+        this.scrolling.easing = 0.1;
         this.scrolling.start = { x: 0, y: -7 };
         this.scrolling.target = { x: 0, y: -7 }; // This will hold the target position for the camera to look at.
         this.scrolling.targetEased = { x: 0, y: -7 }; // This will hold the target position for the camera to look at.
-    
+
         // Listen to mousewheel event for horizontal panning
-        document.addEventListener('mousewheel', (_event) => {
-            this.scrolling.target.y -= _event.deltaY * 0.01; // Invert direction if needed
-        }, { passive: true });
+        document.addEventListener(
+            "mousewheel",
+            (_event) => {
+                this.scrolling.target.y -= _event.deltaY * 0.01; // Invert direction if needed
+            },
+            { passive: true }
+        );
 
         // Touch end to adjust zoom
-        this.renderer.domElement.addEventListener('touchend', (_event) => {
-            this.zoom.targetDistance = this.config.touch ? 30 : 20
-        }, { passive: true });
-    
-        // Touch start for panning
-        this.renderer.domElement.addEventListener('touchstart', (_event) => {
-            if (_event.touches.length === 1) {
-                this.scrolling.start.y = _event.touches[0].pageY;
-            }
-        });
-        this.css3DRenderer.domElement.addEventListener('touchstart', (_event) => {
-            if (_event.touches.length === 1) {
-                this.scrolling.start.y = _event.touches[0].pageY;
-            }
-        });
-    
-        // Touch move for panning
-        this.renderer.domElement.addEventListener('touchmove', (_event) => {
-            if (_event.touches.length === 1) {
-                _event.preventDefault();
-                const deltaY = _event.touches[0].pageY - this.scrolling.start.y;
-                this.scrolling.target.y += deltaY * 0.01; // Apply negative factor if moving right
-                this.scrolling.start.y = _event.touches[0].pageY;
-            }
-        });
-        this.css3DRenderer.domElement.addEventListener('touchmove', (_event) => {
-            if (_event.touches.length === 1) {
-                _event.preventDefault();
-                const deltaY = _event.touches[0].pageY - this.scrolling.start.y;
-                this.scrolling.target.y += deltaY * 0.01; // Apply negative factor if moving right
-                this.scrolling.start.y = _event.touches[0].pageY;
-            }
-        });
+        this.renderer.domElement.addEventListener(
+            "touchend",
+            (_event) => {
+                this.zoom.targetDistance = this.config.touch ? 40 : 20;
+            },
+            { passive: true }
+        );
 
-        this.time.on('tick', () => {
+        // Touch start for panning
+        this.renderer.domElement.addEventListener("touchstart", (_event) => {
+            if (_event.touches.length === 1) {
+                this.scrolling.start.y = _event.touches[0].pageY;
+            }
+        });
+        this.css3DRenderer.domElement.addEventListener(
+            "touchstart",
+            (_event) => {
+                if (_event.touches.length === 1) {
+                    this.scrolling.start.y = _event.touches[0].pageY;
+                }
+            }
+        );
+
+        // Touch move for panning
+        this.renderer.domElement.addEventListener("touchmove", (_event) => {
+            if (_event.touches.length === 1) {
+                _event.preventDefault();
+                const deltaY = _event.touches[0].pageY - this.scrolling.start.y;
+                this.scrolling.target.y += deltaY * 0.01; // Apply negative factor if moving right
+                this.scrolling.start.y = _event.touches[0].pageY;
+            }
+        });
+        this.css3DRenderer.domElement.addEventListener(
+            "touchmove",
+            (_event) => {
+                if (_event.touches.length === 1) {
+                    _event.preventDefault();
+                    const deltaY =
+                        _event.touches[0].pageY - this.scrolling.start.y;
+                    this.scrolling.target.y += deltaY * 0.01; // Apply negative factor if moving right
+                    this.scrolling.start.y = _event.touches[0].pageY;
+                }
+            }
+        );
+
+        this.time.on("tick", () => {
             // Apply easing to the target position for a smooth transition
-            this.scrolling.targetEased.y += (this.scrolling.target.y - this.scrolling.targetEased.y) * this.scrolling.easing;
+            this.scrolling.targetEased.y +=
+                (this.scrolling.target.y - this.scrolling.targetEased.y) *
+                this.scrolling.easing;
         });
 
         // Debug
-        if(this.debug)
-        {
-            this.debugFolder.add(this.zoom, 'distance').step(0.001).min(0).max(50).name('zoomDistance').listen()
+        if (this.debug) {
+            this.debugFolder
+                .add(this.zoom, "distance")
+                .step(0.001)
+                .min(0)
+                .max(50)
+                .name("zoomDistance")
+                .listen();
         }
-
-
     }
 
-    setOrbitControls()
-    {
+    setOrbitControls() {
         // Set up
-        this.orbitControls = new OrbitControls(this.instance, this.renderer.domElement)
-        this.orbitControls.enabled = false
-        this.orbitControls.enableKeys = false
-        this.orbitControls.zoomSpeed = 0.5
+        this.orbitControls = new OrbitControls(
+            this.instance,
+            this.renderer.domElement
+        );
+        this.orbitControls.enabled = false;
+        this.orbitControls.enableKeys = false;
+        this.orbitControls.zoomSpeed = 0.5;
 
         // Debug
-        if(this.debug)
-        {
-            this.debugFolder.add(this.orbitControls, 'enabled').name('orbitControlsEnabled')
+        if (this.debug) {
+            this.debugFolder
+                .add(this.orbitControls, "enabled")
+                .name("orbitControlsEnabled");
         }
     }
 }
