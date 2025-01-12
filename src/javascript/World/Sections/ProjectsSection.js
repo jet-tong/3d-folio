@@ -210,7 +210,7 @@ export default class ProjectsSection {
                         <p>
                             I initiated the development of a Linux application plugin for Raspberry Pi-controlled 3D printers using Klipper firmware, expanding the company's AI service to a wider user base.
                             <br>
-                            Matta's AI service can correct 3D prints in real-time to ensure perfect prints.  Check them out at <a href="https://www.matta.ai/">Matta Labs</a>! 
+                            Matta's AI service can correct 3D prints in real-time to ensure perfect prints.  Check them out at <a href="https://www.matta.ai/">matta.ai</a>! 
                         </p>
                     </div>
                 `,
@@ -249,7 +249,7 @@ export default class ProjectsSection {
                     <div class="custom-css-inner">
                         <h2>Rocket Booster VR</h2>
                         <p>
-                            A fun and simple game to nagivate a rocket through obstacles, but in Virtual Reality :D
+                            A simple game to nagivate a rocket through obstacles, but in Virtual Reality :D
                         </p>
                     </div>
                 `,

@@ -66,7 +66,7 @@ export default class GreetingsSection {
             }
         </style>
         <h2>Hey there👋 I'm Jensen</h2> <br><br>
-        <p>I'm a Cambridge Engineering Graduate in computer vision and software development. 
+        <p>I'm a Cambridge Engineering Graduate specialising in computer vision and software development. 
 
         <br><br>
 
