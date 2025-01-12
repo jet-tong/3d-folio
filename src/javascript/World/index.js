@@ -10,6 +10,8 @@ import Areas from "./Areas.js";
 import Tiles from "./Tiles.js";
 import Walls from "./Walls.js";
 import JensenfolioSection from "./Sections/JensenfolioSection.js";
+import GreetingsSection from "./Sections/GreetingsSection.js";
+import GoodbyeSection from "./Sections/GoodbyeSection.js";
 import IntroSection from "./Sections/IntroSection.js";
 import ProjectsSection from "./Sections/ProjectsSection.js";
 import CrossroadsSection from "./Sections/CrossroadsSection.js";
@@ -116,6 +118,31 @@ export default class {
                     0.3,
                     { opacity: 0 },
                     { opacity: 1, delay: 1.5 }
+                );
+            }
+
+            if (this.sections.greetings) {
+                TweenLite.fromTo(
+                    this.sections.greetings.html.element.style,
+                    0.3,
+                    { opacity: 0 },
+                    { opacity: 1, delay: 0.0 }
+                );
+                // TweenLite.fromTo(this.sections.greetings.image.label.material, 0.3, { opacity: 0 }, { opacity: 1, delay: 0.5 })
+                // TweenLite.fromTo(
+                //     this.sections.greetings.text.label.material,
+                //     0.3,
+                //     { opacity: 0 },
+                //     { opacity: 1, delay: 1.5 }
+                // );
+            }
+
+            if (this.sections.goodbye) {
+                TweenLite.fromTo(
+                    this.sections.goodbye.html.element.style,
+                    0.3,
+                    { opacity: 0 },
+                    { opacity: 1, delay: 0.0 }
                 );
             }
 
@@ -523,15 +550,20 @@ export default class {
         // })
         // this.container.add(this.sections.distinctionD.container)
 
-        // Jensenfolio
-        this.sections.jensenfolio = new JensenfolioSection({
+        // Jensenfolio // * DELETED FOR OVERHAUL
+        // this.sections.jensenfolio = new JensenfolioSection({
+        //     ...options,
+        //     x: 0,
+        //     y: 5,
+        // });
+        // this.container.add(this.sections.jensenfolio.container);
+
+        this.sections.greetings = new GreetingsSection({
             ...options,
             x: 0,
             y: 5,
         });
-        this.container.add(this.sections.jensenfolio.container);
-
-        // TODO: Re-enable sections later
+        this.container.add(this.sections.greetings.container);
 
         // // Intro
         // this.sections.intro = new IntroSection({
@@ -553,11 +585,21 @@ export default class {
         this.sections.projects = new ProjectsSection({
             ...options,
             x: 0,
-            y: -30,
+            y: -25,
             // x: 0,
             // y: 0
         });
         this.container.add(this.sections.projects.container);
+
+        // Goodbye
+        this.sections.goodbye = new GoodbyeSection({
+            ...options,
+            x: 0,
+            y: -100,
+            // x: 0,
+            // y: 0
+        });
+        this.container.add(this.sections.goodbye.container);
 
         // // Information
         // this.sections.information = new InformationSection({

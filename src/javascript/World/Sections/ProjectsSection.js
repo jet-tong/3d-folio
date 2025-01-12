@@ -14,6 +14,12 @@ import projectsRocketBoosterSlideASources from "../../../models/projects/rocketB
 import projectsRocketBoosterSlideBSources from "../../../models/projects/rocketBooster/rocket_booster_controllers.png";
 import projectsRocketBoosterSlideCSources from "../../../models/projects/rocketBooster/rocket_booster_ui.png";
 
+import projectsIYPTSlideASources from "../../../models/projects/iypt/iypt_hurricane_balls.jpg";
+import projectsIYPTSlideBSources from "../../../models/projects/iypt/iypt_my_photo.jpg";
+
+import projectsSafeCrackingSlideASources from "../../../models/projects/safeCracking/safe_cracking_award.jpg";
+import projectsSafeCrackingSlideBSources from "../../../models/projects/safeCracking/safe_cracking_solving.jpg";
+
 import projectsThreejsJourneySlideASources from "../../../models/projects/threejsJourney/slideA.jpg";
 import projectsThreejsJourneySlideBSources from "../../../models/projects/threejsJourney/slideB.jpg";
 import projectsThreejsJourneySlideCSources from "../../../models/projects/threejsJourney/slideC.jpg";
@@ -138,7 +144,7 @@ export default class ProjectsSection {
                     projectsFingerTrackingSlideASources,
                     projectsFingerTrackingSlideBSources,
                     projectsFingerTrackingSlideCSources,
-                    projectsFingerTrackingSlideDSources,
+                    // projectsFingerTrackingSlideDSources,
                 ],
                 floorHTML: `
                     <style>
@@ -200,10 +206,10 @@ export default class ProjectsSection {
                         }
                     </style>
                     <div class="custom-css-inner">
-                        <h3>Linux Plugin for 3D Printing</h3>
+                        <h2>Linux Plugin for 3D Printing</h2>
                         <p>
                             I initiated the development of a Linux application plugin for Raspberry Pi-controlled 3D printers using Klipper firmware, expanding the company's AI service to a wider user base.
-
+                            <br>
                             Matta's AI service can correct 3D prints in real-time to ensure perfect prints.  Check them out at <a href="https://www.matta.ai/">Matta Labs</a>! 
                         </p>
                     </div>
@@ -241,7 +247,7 @@ export default class ProjectsSection {
                         }
                     </style>
                     <div class="custom-css-inner">
-                        <h3>Rocket Booster VR</h3>
+                        <h2>Rocket Booster VR</h2>
                         <p>
                             A fun and simple game to nagivate a rocket through obstacles, but in Virtual Reality :D
                         </p>
@@ -261,10 +267,8 @@ export default class ProjectsSection {
             {
                 name: "Safe Cracking Physics Tournament",
                 imageSources: [
-                    projectsThreejsJourneySlideASources,
-                    projectsThreejsJourneySlideBSources,
-                    projectsThreejsJourneySlideCSources,
-                    projectsThreejsJourneySlideDSources,
+                    projectsSafeCrackingSlideASources,
+                    projectsSafeCrackingSlideBSources,
                 ],
                 floorHTML: `
                     <style>
@@ -281,7 +285,7 @@ export default class ProjectsSection {
                         }
                     </style>
                     <div class="custom-css-inner">
-                        <h3>Most Popular 'Safe' in UK</h3>
+                        <h2>Most Popular 'Safe' in UK</h2>
                         <p>
                             We built a physics puzzle named the Most Popular Safe in the national 'Safe Cracking Physics tournament'! We also achieved First Runner-up and participated in the 24th international competition in Israel.
                         </p>
@@ -301,10 +305,8 @@ export default class ProjectsSection {
             {
                 name: "IYPT",
                 imageSources: [
-                    projectsThreejsJourneySlideASources,
-                    projectsThreejsJourneySlideBSources,
-                    projectsThreejsJourneySlideCSources,
-                    projectsThreejsJourneySlideDSources,
+                    projectsIYPTSlideASources,
+                    projectsIYPTSlideBSources,
                 ],
                 floorHTML: `
                     <style>
@@ -321,14 +323,14 @@ export default class ProjectsSection {
                         }
                     </style>
                     <div class="custom-css-inner">
-                        <h3>International Young Physicists' Tournament</h3>
+                        <h2>International Young Physicists' Tournament</h2>
                         <p>
                             I represented the UK in the 32nd IYPT in Poland as part of a team of 5. I analysed the rotational dynamics of 'Hurricane Balls' using motion analysis software Tracker. In the competition, we presented and defended findings in physics fights against other international teams.
                         </p>
                     </div>
                 `,
                 link: {
-                    href: "http://iypt.pl/physics-fight-4/",
+                    href: "http://iypt.pl/",
                     x: -4.8,
                     y: -3,
                     halfExtents: {

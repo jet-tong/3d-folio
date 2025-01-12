@@ -40,7 +40,7 @@ export default class Project {
         this.boards.items = [];
         this.boards.xStart = -5;
         this.boards.xInter = 5;
-        this.boards.y = 5;
+        this.boards.y = 3;
         this.boards.color = "#8e7161";
         this.boards.threeColor = new THREE.Color(this.boards.color);
 
@@ -174,7 +174,7 @@ export default class Project {
             htmlElement.style.opacity = "0"; // Start with the element being transparent
             htmlElement.style.transition = "opacity 0.3s ease-in-out"; // Fade-in transition
             htmlElement.style.position = "absolute"; // Position absolutely
-            htmlElement.style.maxWidth = "660px"; // Limit width for better layout
+            htmlElement.style.maxWidth = "600px"; // Limit width for better layout // TODO Adjust based on alignment
             htmlElement.style.padding = "10px"; // Add padding for spacing
             htmlElement.style.overflow = "hidden"; // Prevent overflow content
 
@@ -183,8 +183,8 @@ export default class Project {
 
             // Create CSS3DObject
             const css3DObject = new CSS3DObject(htmlElement);
-            css3DObject.position.set(0, 2, 0); // Adjust position relative to the floor
-            css3DObject.scale.set(0.025, 0.025, 0.025); // Adjust scale for the scene
+            css3DObject.position.set(-2.2, 2, 0); // Adjust position relative to the floor // TODO Adjust based on alignment
+            css3DObject.scale.set(0.02, 0.02, 0.02); // Adjust scale for the scene
             this.floor.container.add(css3DObject);
 
             // Fade-in animation
